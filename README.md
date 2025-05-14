@@ -4,6 +4,7 @@ This project aims to build machine learning models to **predict aircraft Actual 
 
 ## 📁 Project Structure
 
+```
 ├── data/
 │ ├── raw/
 │ │ ├── training.csv                                    # training set
@@ -32,7 +33,7 @@ This project aims to build machine learning models to **predict aircraft Actual 
 ├── main.py                                             # main file to initialize training and testing
 ├── requirements.txt                                    # Python dependencies
 └── README.md                                           
-
+```
 
 ---
 
@@ -41,8 +42,8 @@ This project aims to build machine learning models to **predict aircraft Actual 
 ### 1. Clone the Repository
 
 ```bash
-git clone <>
-cd ryanair-fuel-modeling
+git clone https://github.com/berayboztepe/ryanair-fuel-consumption-modeling
+cd ryanair-fuel-consumption-modeling
 ```
 
 ### 2. Install Dependencies
@@ -53,7 +54,9 @@ pip install -r requirements.txt
 
 ### 3. Run the Training Pipeline
 
-Either using terminal or running main.py file by ide. Important Note: all files include LOGs to track error line in case of failure in execution. These can be deleted as well.
+Either using terminal or running main.py file by ide. 
+
+**Important Note:** all files include LOGs to track error line in case of failure in execution. These can be deleted as well.
 
 ```bash
 python main.py
@@ -107,7 +110,7 @@ showed that these important columns are stored as object type. This required han
 
 and some weak correlations:
 
-* `FlightNumber`, `DepartureDay`, `DepartureMonth`, `DepartureYear` show almost no correlation with other features. Dropping or Feature Engineering might be needed.
+* `FlightNumber`, `DepartureDay`, `DepartureMonth`, `DepartureYear` show almost no correlation with other features. Dropping or feature engineering might be needed.
 
 ![alt text](images/tow_distribution.png)
 
@@ -115,7 +118,7 @@ This plot can be interpreted as:
 
 * Most flights have moderate or lower take-off weights.
 
-* The tail of the distribution shows a few extreme values. Indicates the need for outlier detection or winsorization.
+* The tail of the distribution shows a few extreme values, indicates the need for outlier detection or winsorization.
 
 * There are fewer flights with very high TOW.
 
@@ -143,7 +146,7 @@ This plot can be interpreted as:
 
 This plot can be interpreted as: 
 
-* there is a clear positive linear relationship as the number of passengers increases, TOW increases. The pattern forms a dense cloud with a sloped linear alignment, showing TOW is highly dependent on the passenger count.
+* There is a clear positive linear relationship as the number of passengers increases, TOW increases. The pattern forms a dense cloud with a sloped linear alignment, showing TOW is highly dependent on the passenger count.
 
 ## Data Preprocessing
 
@@ -236,13 +239,17 @@ One tip is to increase the max_iter but since it potentially increases the execu
 
 * All models (including RandomForest, GBM, XGBoost, etc.) could be trained across all strategy combinations for more comprehensive comparison. 
 
-* All methods can be trained using hyperparameter tuning. Especially for Ridge and Lasso, alpha value can be trained in Grid Search. 
+* All methods can be trained using hyperparameter tuning (e.g., GridSearchCV or RandomizedSearchCV) to optimize key parameters like:
+
+  * alpha in Ridge and Lasso
+
+  * n_estimators, max_depth in Random Forest and Gradient Boosting
 
 * More models and regularization techniques can be included. (ElasticNet, LightGBM, SVR, Decision Tree etc.)
 
 * Cross-validation can be applied
 
-* More feature engineering methods or feature selection techniques
+* More feature engineering methods, feature selection techniques, dimension reduction (based on different preprocessing technique)
 
 * XAI methods for more explainability.
 
