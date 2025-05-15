@@ -68,6 +68,7 @@ This will:
 * Train models with different combinations of preprocessing strategies
 * Save models and log RMSEs
 * Output results in `reports/rmse_results.csv`
+* Predictions of validation data in `reports/predictions.csv`
 
 ## Exploratory Data Analysis (EDA)
 
@@ -224,6 +225,12 @@ Therefore, there will be 3 × 3 = 9 combinations per model, and with 2 models a 
 * and also improved version of Lasso which is called LassoCV that applies Cross Validation. 
 
 All models are trained and evaluated, and the best model overall is selected based on RMSE. This model is then used to generate predictions on the validation set. All RMSE results with their strategy settings will be saved to a file `reports/rmse_results.csv`
+
+All models are saved as a .pkl file for possible future usage. The format for file naming is 
+
+`<best_model_name>_missing_<best_setting_missing>_outlier_<best_setting_outlier>.pkl` 
+
+where model_name corresponds the method (ridge, lasso etc.), best_setting_missing corresponds how missing values are handled (mean, median, drop etc.), best_setting_outlier corresponds how outliers handled (zscore, iqr, none). After evaluation finishes, these models can be deleted or kept. It depends on one line of code (best model will be kept anyway)
 
 ### ⚠️ Note on Lasso Convergence
 
